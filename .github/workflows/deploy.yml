@@ -1,35 +1,40 @@
-name: Deploy to S3
+name: Deploy TerriaMap to S3
 
 on:
   push:
     branches:
-      - main
+      - main  # or your default branch
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-
-      - name: Install Yarn
-        run: npm install -g yarn
+          node-version: '20'
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          npm install -g yarn gulp-cli
+          yarn install
 
       - name: Build TerriaMap
         run: yarn gulp release
 
-      - name: Deploy to S3
-        run: aws s3 sync build/ s3://terriamap-dan-demo --delete
+      - name: Sync to S3
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: --acl public-read --delete
         env:
+          AWS_S3_BUCKET: terriamap-dan-demo
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-west-1
+          SOURCE_DIR: build/
