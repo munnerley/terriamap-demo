@@ -1,9 +1,9 @@
 {
   "homeCamera": {
-    "north": -8,
-    "east": 158,
-    "south": -45,
-    "west": 109
+    "west": -112.5,
+    "south": 33.2,
+    "east": -111.6,
+    "north": 33.6
   },
   "catalog": [
     {
@@ -758,9 +758,27 @@
           ]
         }
       ]
+    },
+    {
+      "name": "New York 3D Tiles",
+      "type": "3d-tiles",
+      "ionAssetId": 96188,
+      "highlightColor": "#00ffff"
+    },
+    {
+      "name": "Desert Rock Dubai",
+      "type": "3d-tiles",
+      "ionAssetId": 2728299,
+      "highlightColor": "#00ffff"
+    },
+    {
+      "name": "Gaitlin Arcahelogical Site",
+      "type": "3d-tiles",
+      "ionAssetId": 2728314,
+      "highlightColor": "#00ffff"
     }
   ],
-  "viewerMode": "3dSmooth",
+  "initialViewerMode": "3DTerrain",
   "baseMaps": {
     "defaultBaseMapId": "basemap-openstreetmap",
     "previewBaseMapId": "basemap-natural-earth-II"
