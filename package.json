@@ -23,6 +23,8 @@
     "url": "http://github.com/TerriaJS/TerriaMap"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-keywords": "^5.1.0",
     "terriajs-server": "^4.0.2"
   },
   "config": {
@@ -79,7 +81,7 @@
     "terriajs-cesium": "8.0.2",
     "terriajs-plugin-api": "0.0.1-alpha.17",
     "terriajs-plugin-sample": "0.0.1-alpha.7",
-    "typescript": "^5.7.3",
+    "typescript": "~4.9.5",
     "urijs": "^1.18.12",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
